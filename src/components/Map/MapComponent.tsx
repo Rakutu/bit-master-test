@@ -63,7 +63,7 @@ function MapComponent({ cars, orderPoint }: IMapComponentProps ) {
 		<div>
 			<YMaps query={{
 				ns: "use-load-option",
-				apikey: '812ee275-8d07-4be6-9acc-eb0afcf4a2f2',
+				apikey: 'map_api_key',
 				load: 'package.full'
 				}} >
 					<Map
