@@ -1,0 +1,10 @@
+.mapContainer {
+    width: 72%;
+    height: 300px;
+    padding-right: 10px;
+}
+
+.carsListContainer {
+    width: 28%;
+    height: 300px;
+}

@@ -1,0 +1,22 @@
+.spinerWrapper {
+    position: relative;
+    width: 100%;
+    height: 50%;
+}
+
+.spiner {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: calc(50% + 25px);
+    left: calc(50% - 25px);
+    border-radius: 50%;
+    border: 3px solid gray;
+    border-top: 3px solid white;
+    animation: spiner 1.5s ease-in-out infinite;
+}
+
+@keyframes spiner {
+    0% { transform: rotate(0deg) }
+    100% { transform: rotate(360deg) }
+}
