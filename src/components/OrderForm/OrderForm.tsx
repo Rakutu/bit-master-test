@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { rootReducerTypes } from '../../store/rootReducer';
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { addressAction } from '../../store/addressReducer/addressReducer';
-import { ICar, ICarsState } from '../../store/carsReducer/carsReducerTypes';
+import { ICarsState } from '../../store/carsReducer/carsReducerTypes';
 import SuitCarItem from './SuitCarItem/SuitCarItem';
 import { IAddressState } from '../../store/addressReducer/addressRreducerTypes';
 import getDateString from '../../utils/getDate';
@@ -34,7 +34,7 @@ function OrderForm() {
     }, [cars])
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setValue(event.target.value)
+        setValue(() => event.target.value)
     }
 
     const handleBlulr = () => {

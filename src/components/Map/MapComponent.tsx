@@ -47,13 +47,13 @@ function MapComponent({ cars, orderPoint }: IMapComponentProps ) {
 	
 
 	const getCoordsOnClick = (event: YMapsApi) => {
-		const coords = event.get('coords')
+		const coords: [number, number] = event.get('coords')
 		setIsAddress(true)
 		setPlacemarkCoords(coords)
 	}
 
 	const getCoordsOnDrag = (event: YMapsApi) => {
-		const coords = event.get('target').geometry.getCoordinates()
+		const coords: [number, number] = event.get('target').geometry.getCoordinates()
 		setIsAddress(true)
 		setPlacemarkCoords(coords)
 	}
@@ -63,7 +63,7 @@ function MapComponent({ cars, orderPoint }: IMapComponentProps ) {
 		<div>
 			<YMaps query={{
 				ns: "use-load-option",
-				apikey: 'map_api_key',
+				apikey: '812ee275-8d07-4be6-9acc-eb0afcf4a2f2',
 				load: 'package.full'
 				}} >
 					<Map

@@ -2,13 +2,14 @@ import { Dispatch, SetStateAction } from "react";
 import { YMapsApi } from "react-yandex-maps";
 import { TAddressCoords, TAddressName } from "../../store/addressReducer/addressRreducerTypes";
 
+
 export const getAddress = (ymaps: YMapsApi | undefined, coords: TAddressCoords | undefined, setAddress: Dispatch<SetStateAction<string>>, setIsAddress: Dispatch<SetStateAction<boolean>>) => {
     if (!ymaps) return
 
     ymaps.geocode(coords).then((res: YMapsApi) => {
         const geoObject = res.geoObjects.get(0)
 
-        const premiseNumber = geoObject.getPremiseNumber();
+        const premiseNumber: number = geoObject.getPremiseNumber();
         const address = [
             geoObject.getLocalities().length ? geoObject.getLocalities() : geoObject.getAdministrativeAreas(),
             geoObject.getThoroughfare() || geoObject.getPremise(),
@@ -17,11 +18,11 @@ export const getAddress = (ymaps: YMapsApi | undefined, coords: TAddressCoords |
 
 
         if (!premiseNumber) {
-            setIsAddress(false)
+            setIsAddress(() => false)
             return
         }
 
-        setAddress(address)
+        setAddress(() => address)
     })
 }
 
@@ -36,12 +37,12 @@ export const getCoords = (ymaps: YMapsApi | undefined, address: TAddressName | u
             const premiseNumber = geoObjects.getPremiseNumber();
 
             if (!address && !premiseNumber) {
-                setIsAddress(false)
+                setIsAddress(() => false)
                 return
             }
 
             setIsAddress(true)
-            const coords = res.geoObjects.get(0).geometry.getCoordinates();
-            setCoords(coords)
+            const coords: [number, number] = res.geoObjects.get(0).geometry.getCoordinates();
+            setCoords(() => coords)
         })
 }
